@@ -5,7 +5,7 @@ import CollectionItem from "../collection-item/collection-item.component";
 function CollectionPreview({ id, title, routeName, items }) {
   return (
     <div className='collection-preview'>
-      <h1 className='title'>{title.toUpperCase()}</h1>
+      <div className='title'>{title.toUpperCase()}</div>
       <div className='preview'>
         {items.map((item, idx) => {
           if (idx >= 4) return null;

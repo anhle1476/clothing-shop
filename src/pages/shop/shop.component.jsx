@@ -12,7 +12,7 @@ export default class ShopPage extends Component {
   render() {
     return (
       <div className='shop-page'>
-        <h1>COLLECTION</h1>
+        <h1>Collections</h1>
         {this.state.shopData.map(({ id, ...otherShopDataProps }) => (
           <CollectionPreview key={id} {...otherShopDataProps} />
         ))}
