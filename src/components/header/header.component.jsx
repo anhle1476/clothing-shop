@@ -14,13 +14,16 @@ function Header() {
       </Link>
       <div className='options'>
         <NavLink className='option' exact to='/' activeStyle={activeStyle}>
-          Home
+          HOME
         </NavLink>
         <NavLink className='option' to='/shop' activeStyle={activeStyle}>
-          Shop
+          SHOP
         </NavLink>
-        <NavLink className='option' to='/Contact' activeStyle={activeStyle}>
-          Contact
+        <NavLink className='option' to='/contact' activeStyle={activeStyle}>
+          CONTACT
+        </NavLink>
+        <NavLink className='option' to='/signin' activeStyle={activeStyle}>
+          SIGN IN
         </NavLink>
       </div>
     </div>
