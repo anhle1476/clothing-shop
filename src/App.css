@@ -1,3 +1,8 @@
+* {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Open Sans Condensed", sans-serif;
+  padding: 20px 50px;
 }
