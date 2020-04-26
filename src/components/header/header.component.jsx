@@ -2,8 +2,9 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import "../../css/header.style.min.css";
+import { auth } from "../../firebase/firebase.utils";
 
-function Header() {
+function Header({ currentUser }) {
   const activeStyle = {
     fontWeight: "bold",
   };
@@ -22,9 +23,15 @@ function Header() {
         <NavLink className='option' to='/contact' activeStyle={activeStyle}>
           CONTACT
         </NavLink>
-        <NavLink className='option' to='/signin' activeStyle={activeStyle}>
-          SIGN IN
-        </NavLink>
+        {currentUser ? (
+          <div className='option' onClick={() => auth.signOut()}>
+            SIGN OUT
+          </div>
+        ) : (
+          <NavLink className='option' to='/signin' activeStyle={activeStyle}>
+            SIGN IN
+          </NavLink>
+        )}
       </div>
     </div>
   );
