@@ -3,7 +3,6 @@ import "../../css/sign-up.style.min.css";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
-import { withRouter } from "react-router-dom";
 
 export class SignUp extends Component {
   constructor(props) {
@@ -43,7 +42,6 @@ export class SignUp extends Component {
         password: "",
         confirmPassword: "",
       });
-      this.props.history.push("/");
     } catch (error) {
       console.log(error.code, error.message);
     }
@@ -96,4 +94,4 @@ export class SignUp extends Component {
   }
 }
 
-export default withRouter(SignUp);
+export default SignUp;

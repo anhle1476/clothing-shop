@@ -1,3 +1,5 @@
 export const initialStates = {
-  currentUser: null,
+  user: {
+    currentUser: null,
+  },
 };
