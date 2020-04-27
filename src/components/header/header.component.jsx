@@ -4,10 +4,16 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 import "../../css/header.style.min.css";
 import { auth } from "../../firebase/firebase.utils";
 import { connect } from "react-redux";
+import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
-function Header({ currentUser }) {
+function Header({ currentUser, hidden }) {
   const activeStyle = {
     fontWeight: "bold",
+  };
+
+  const hideShowDropdown = () => {
+    console.log("clicked");
   };
 
   return (
@@ -34,13 +40,16 @@ function Header({ currentUser }) {
             SIGN IN
           </NavLink>
         )}
+        <CartIcon onClick={hideShowDropdown} />
       </div>
+      {!hidden && <CartDropdown />}
     </div>
   );
 }
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
+const mapStateToProps = ({ user, cart }) => ({
+  currentUser: user.currentUser,
+  hidden: cart.hidden,
 });
 
 export default connect(mapStateToProps)(Header);
