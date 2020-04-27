@@ -3,6 +3,7 @@ import FormInput from "../form-input/form-input.component";
 import "../../css/sign-in.style.min.css";
 import CustomButton from "../custom-button/custom-button.component";
 import { signInWithGoogle } from "../../firebase/firebase.utils";
+import { auth } from "../../firebase/firebase.utils";
 import { withRouter } from "react-router-dom";
 
 class SignIn extends Component {
@@ -14,9 +15,25 @@ class SignIn extends Component {
     };
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
-    this.setState({ email: "", password: "" });
+    const { email, password } = this.state;
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({ email: "", password: "" });
+      this.props.history.push("/");
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  handleSignInWithGoogle = async () => {
+    try {
+      await signInWithGoogle();
+      this.props.history.push("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   handleChange = (e) => {
@@ -48,7 +65,7 @@ class SignIn extends Component {
           />
           <div className='buttons'>
             <CustomButton type='submit'>Sign in</CustomButton>
-            <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+            <CustomButton onClick={this.handleSignInWithGoogle} isGoogleSignIn>
               Sign in with Google
             </CustomButton>
           </div>
@@ -58,4 +75,4 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+export default withRouter(SignIn);
