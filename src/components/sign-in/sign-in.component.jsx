@@ -3,8 +3,9 @@ import FormInput from "../form-input/form-input.component";
 import "../../css/sign-in.style.min.css";
 import CustomButton from "../custom-button/custom-button.component";
 import { signInWithGoogle } from "../../firebase/firebase.utils";
+import { withRouter } from "react-router-dom";
 
-export default class SignIn extends Component {
+class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,9 +27,9 @@ export default class SignIn extends Component {
   render() {
     return (
       <div className='sign-in' onSubmit={this.handleSubmit}>
-        <h2>I already have an account</h2>
+        <h2 className='title'>I already have an account</h2>
         <span>Sign in with email and password</span>
-        <form>
+        <form className='sign-in-form'>
           <FormInput
             name='email'
             type='email'
@@ -56,3 +57,5 @@ export default class SignIn extends Component {
     );
   }
 }
+
+export default SignIn;
