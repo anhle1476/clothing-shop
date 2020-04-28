@@ -3,7 +3,7 @@ export const initialStates = {
     currentUser: null,
   },
   cart: {
-    hidden: false,
-    countItems: 0,
+    hidden: true,
+    cartItems: [],
   },
 };
