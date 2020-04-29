@@ -1,14 +1,17 @@
 import React from "react";
-import "./App.css";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+
 import HomePage from "./pages/homepage/homepage.component";
 import NotFoundPage from "./pages/notfound/notfound.component";
+import CheckOutPage from "./pages/checkout/checkout.component";
 import ShopPage from "./pages/shop/shop.component";
-import { Switch, Route, Redirect } from "react-router-dom";
 import Header from "./components/header/header.component";
 import SignInAndSignOut from "./components/sign-in-and-sign-out/sign-in-and-sign-out.component";
+
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
-import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.action";
+import "./App.css";
 
 class App extends React.Component {
   constructor(props) {
@@ -50,6 +53,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
+          <Route exact path='/checkout' component={CheckOutPage} />
           <Route
             exact
             path='/signin'
