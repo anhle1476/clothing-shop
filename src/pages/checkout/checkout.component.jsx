@@ -1,14 +1,14 @@
-import "../../css/checkout.style.min.css";
-
 import React from "react";
 import { connect } from "react-redux";
 
-import { CheckOutItem } from "../../components/checkout-item/checkout-item.component";
 import { createStructuredSelector } from "reselect";
 import {
   selectCartItems,
   selectCartTotal,
 } from "../../redux/cart/cart.selector";
+
+import CheckOutItem from "../../components/checkout-item/checkout-item.component";
+import "../../css/checkout.style.min.css";
 
 const CheckOutPage = ({ cartItems, total }) => {
   return (
