@@ -23,9 +23,7 @@
   }
 
   .quantity {
-    padding-left: 20px;
-    .increase-quantity,
-    .decrease-quantity {
+    .arrow {
       padding: 0 5px;
       cursor: pointer;
     }

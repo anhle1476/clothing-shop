@@ -4,15 +4,15 @@ import React from "react";
 import { connect } from "react-redux";
 
 import {
-  increaseItemQuantity,
+  addItemToCart,
   decreaseItemQuantity,
   deleteCartItem,
 } from "../../redux/cart/cart.action";
 
 export const CheckOutItem = ({
   cartItem,
-  increaseQuantity,
   decreaseQuantity,
+  addItemToCart,
   deleteItem,
 }) => {
   const { imageUrl, name, price, quantity, id } = cartItem;
@@ -24,7 +24,7 @@ export const CheckOutItem = ({
       <div className='name'>{name}</div>
       <div className='quantity'>
         <span
-          className='decrease-quantity'
+          className='arrow'
           onClick={() => {
             quantity !== 1 && decreaseQuantity(cartItem);
           }}
@@ -32,12 +32,7 @@ export const CheckOutItem = ({
           &#10094;
         </span>
         {quantity}
-        <span
-          className='increase-quantity'
-          onClick={() => {
-            increaseQuantity(cartItem);
-          }}
-        >
+        <span className='arrow' onClick={() => addItemToCart(cartItem)}>
           &#10095;
         </span>
       </div>
@@ -50,7 +45,7 @@ export const CheckOutItem = ({
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  increaseQuantity: (item) => dispatch(increaseItemQuantity(item)),
+  addItemToCart: (item) => dispatch(addItemToCart(item)),
   decreaseQuantity: (item) => dispatch(decreaseItemQuantity(item)),
   deleteItem: (id) => dispatch(deleteCartItem(id)),
 });

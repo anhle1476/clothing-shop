@@ -1,6 +1,9 @@
 {
     "cSpell.ignoreWords": [
         "firestore",
-        "signin"
+        "persistor",
+        "select",
+        "signin",
+        "womens"
     ]
 }
