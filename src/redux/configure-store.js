@@ -7,8 +7,10 @@ function configureStore(initialState) {
   // using redux dev tool
   const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-  const middleware = [logger];
-
+  const middleware = [];
+  if (process.env.NODE_ENV === "development") {
+    middleware.push(logger);
+  }
   return createStore(
     rootReducer,
     initialState,
