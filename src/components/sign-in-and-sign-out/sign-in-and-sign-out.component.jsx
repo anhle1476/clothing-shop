@@ -1,13 +1,13 @@
 import React from "react";
 import SignIn from "../sign-in/sign-in.component";
 import SignUp from "../sign-up/sign-up.component";
-import "../../css/sign-in-and-sign-out.style.min.css";
+import { SignInAndSignOutContainer } from "./sign-in-and-sign-out.styles";
 
 export default function SignInAndSignOut() {
   return (
-    <div className='sign-in-and-sign-out'>
+    <SignInAndSignOutContainer>
       <SignIn />
       <SignUp />
-    </div>
+    </SignInAndSignOutContainer>
   );
 }

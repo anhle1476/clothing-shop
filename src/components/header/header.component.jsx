@@ -1,5 +1,4 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
@@ -10,7 +9,12 @@ import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import { selectCurrentUser } from "../../redux/user/user.selector";
 import { selectCartHidden } from "../../redux/cart/cart.selector";
 import { auth } from "../../firebase/firebase.utils";
-import "../../css/header.style.min.css";
+import {
+  HeaderContainer,
+  LogoContainer,
+  OptionsContainer,
+  OptionLink,
+} from "./header.styles";
 
 function Header({ currentUser, hidden }) {
   const activeStyle = {
@@ -22,33 +26,37 @@ function Header({ currentUser, hidden }) {
   };
 
   return (
-    <div className='header'>
-      <Link to='/' className='logo-container'>
+    <HeaderContainer>
+      <LogoContainer to='/' className='logo-container'>
         <Logo className='logo' />
-      </Link>
-      <div className='options'>
-        <NavLink className='option' exact to='/' activeStyle={activeStyle}>
+      </LogoContainer>
+      <OptionsContainer className='options'>
+        <OptionLink className='option' exact to='/' activeStyle={activeStyle}>
           HOME
-        </NavLink>
-        <NavLink className='option' to='/shop' activeStyle={activeStyle}>
+        </OptionLink>
+        <OptionLink className='option' to='/shop' activeStyle={activeStyle}>
           SHOP
-        </NavLink>
-        <NavLink className='option' to='/contact' activeStyle={activeStyle}>
+        </OptionLink>
+        <OptionLink className='option' to='/contact' activeStyle={activeStyle}>
           CONTACT
-        </NavLink>
+        </OptionLink>
         {currentUser ? (
-          <div className='option' onClick={() => auth.signOut()}>
+          <OptionLink
+            as='div'
+            className='option'
+            onClick={() => auth.signOut()}
+          >
             SIGN OUT
-          </div>
+          </OptionLink>
         ) : (
-          <NavLink className='option' to='/signin' activeStyle={activeStyle}>
+          <OptionLink className='option' to='/signin' activeStyle={activeStyle}>
             SIGN IN
-          </NavLink>
+          </OptionLink>
         )}
         <CartIcon onClick={hideShowDropdown} />
-      </div>
+      </OptionsContainer>
       {!hidden && <CartDropdown />}
-    </div>
+    </HeaderContainer>
   );
 }
 

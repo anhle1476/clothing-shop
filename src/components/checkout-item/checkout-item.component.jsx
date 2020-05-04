@@ -1,7 +1,13 @@
-import "../../css/checkout-item.style.min.css";
-
 import React from "react";
 import { connect } from "react-redux";
+
+import {
+  CheckoutItemContainer,
+  ImageContainer,
+  QuantityContainer,
+  TextContainer,
+  RemoveButtonContainer,
+} from "./checkout-item.styles";
 
 import {
   addItemToCart,
@@ -17,12 +23,12 @@ export const CheckOutItem = ({
 }) => {
   const { imageUrl, name, price, quantity, id } = cartItem;
   return (
-    <div className='checkout-item'>
-      <div className='image-container'>
+    <CheckoutItemContainer>
+      <ImageContainer>
         <img src={imageUrl} alt='cart item' />
-      </div>
-      <div className='name'>{name}</div>
-      <div className='quantity'>
+      </ImageContainer>
+      <TextContainer>{name}</TextContainer>
+      <QuantityContainer>
         <span
           className='arrow'
           onClick={() => {
@@ -35,12 +41,12 @@ export const CheckOutItem = ({
         <span className='arrow' onClick={() => addItemToCart(cartItem)}>
           &#10095;
         </span>
-      </div>
-      <div className='price'>{price}</div>
-      <button className='remove-button' onClick={() => deleteItem(id)}>
+      </QuantityContainer>
+      <TextContainer>{price}</TextContainer>
+      <RemoveButtonContainer onClick={() => deleteItem(id)}>
         &#10005;
-      </button>
-    </div>
+      </RemoveButtonContainer>
+    </CheckoutItemContainer>
   );
 };
 
