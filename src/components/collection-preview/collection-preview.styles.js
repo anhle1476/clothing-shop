@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const CollectionPreviewContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
+  margin-bottom: 70px;
 `;
 
 export const TitleContainer = styled(Link)`

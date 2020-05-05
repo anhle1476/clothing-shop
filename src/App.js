@@ -8,10 +8,13 @@ import CheckOutPage from "./pages/checkout/checkout.component";
 import ShopPage from "./pages/shop/shop.component";
 import Header from "./components/header/header.component";
 import SignInAndSignOut from "./components/sign-in-and-sign-out/sign-in-and-sign-out.component";
+import { createStructuredSelector } from "reselect";
 
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.action";
 import "./App.css";
+
+import { selectCurrentUser } from "./redux/user/user.selector";
 
 class App extends React.Component {
   constructor(props) {
@@ -72,8 +75,8 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser,
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({

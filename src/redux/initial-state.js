@@ -1,5 +1,3 @@
-import SHOP_DATA from "./shop/shop.data";
-
 export const initialStates = {
   user: {
     currentUser: null,
@@ -45,6 +43,6 @@ export const initialStates = {
     ],
   },
   shop: {
-    collections: SHOP_DATA,
+    collections: null,
   },
 };

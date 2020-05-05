@@ -8,6 +8,7 @@ import {
   TitleContainer,
   ItemsContainer,
 } from "./collection.styles";
+import { withRouter } from "react-router-dom";
 
 const CollectionPage = ({ collection }) => {
   if (!collection) return <NotfoundPage />;
@@ -27,4 +28,4 @@ const mapStateToProps = (state, ownProps) => ({
   collection: selectCollection(ownProps.match.params.collectionId)(state),
 });
 
-export default connect(mapStateToProps)(CollectionPage);
+export default withRouter(connect(mapStateToProps)(CollectionPage));

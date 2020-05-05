@@ -41,8 +41,36 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
+export const createCollectionAndDocument = async (objectKey, objectData) => {
+  const objectRef = firestore.collection(objectKey);
+
+  let batch = firestore.batch();
+
+  objectData.forEach((obj) => {
+    const newDocRef = objectRef.doc();
+    batch.set(newDocRef, obj);
+  });
+  batch.commit();
+};
+
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: "select_account" });
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;
+
+export const convertSnapshotToMap = (snapshot) => {
+  return snapshot.docs.reduce((accumulator, doc) => {
+    // get data from doc
+    const { title, items } = doc.data();
+    const name = encodeURI(title.toLowerCase());
+    // add data to accumulator object -> pass to next doc
+    accumulator[name] = {
+      routeName: name,
+      id: doc.id,
+      title,
+      items,
+    };
+    return accumulator;
+  }, {});
+};
