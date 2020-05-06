@@ -27,11 +27,11 @@ export const initialStates = {
         linkUrl: "shop/sneakers",
       },
       {
-        title: "womans",
+        title: "womens",
         imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
         size: "large",
         id: 4,
-        linkUrl: "shop/womans",
+        linkUrl: "shop/womens",
       },
       {
         title: "mens",
@@ -44,5 +44,7 @@ export const initialStates = {
   },
   shop: {
     collections: null,
+    isFetching: false,
+    errorMessage: undefined,
   },
 };
