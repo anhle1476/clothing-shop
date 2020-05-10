@@ -1,6 +1,7 @@
 export const initialStates = {
   user: {
     currentUser: null,
+    error: null,
   },
   cart: {
     hidden: true,
